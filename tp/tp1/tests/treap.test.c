@@ -4,7 +4,7 @@
    
 int tests_run = 0;
  
-struct node *a;
+struct node *a, *b, *c, *d, *e;
 
 static char * test_insert() {
     insert_node(3, &a);
@@ -16,14 +16,26 @@ static char * test_insert() {
     return 0;
 }
 
-static char * test_search() {
-    mu_assert("error, search of 3 must return 3", search_node(3, a) == 3);
-    mu_assert("error, search of 1 must return 1", search_node(1, a) == 1);
-    mu_assert("error, search of 4 must return 4", search_node(4, a) == 4);
-    mu_assert("error, search of 5 must return -1", search_node(5, a) == -1);
+static char * test_search() {    
+    a = search_node(3, &a);
+    b = search_node(1, &a);
+    c = search_node(4, &a);
+    d = search_node(5, &a);
+    mu_assert("error, search of 3 must return 3", a->value == 3);
+    mu_assert("error, search of 1 must return his parent 3", b->value == 3);
+    mu_assert("error, search of 4 must return his parent 3", c->value == 3);
+    mu_assert("error, search of 5 must return his parent 4", d->value == 4);
     return 0;
 }
- 
+
+static char * test_insert_and_search() {
+    e = search_node(2, &a);
+    mu_assert("error, value of node a must be 1", e->value == 1);
+    insert_node(2, &a);
+    e = search_node(2, &a);
+    mu_assert("error, value of node a must be 1", e->value == 1);
+    return 0;
+}
 static char * all_tests() {
     mu_run_test(test_insert);
     mu_run_test(test_search);
