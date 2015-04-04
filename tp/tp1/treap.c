@@ -12,57 +12,47 @@ void insert_node(int value, struct node **tree) {
         temp->left = NULL;
         temp->right = NULL;
         temp->value = value;
-        printf("%d\n", value);
+        if(temp->size) {
+            temp->size++;
+        } else {
+            temp->size = 0;
+        }
         *tree = temp;
     } else if(value > (*tree)->value) {
-        printf("right\n");
         insert_node(value, &(*tree)->right);
     } else if(value < (*tree)->value) {
-        printf("left\n");        
         insert_node(value, &(*tree)->left);
     }
 }
 
 /**
- * This function searches for the position to insert a new node
+ * Function that searches a value in the tree.
+ * 
  * @param  int value           - Value searched
  * @param  struct node **tree  - Pointer to the tree to look up
- * @return struct node *tree   - Tree that contains the value searched or the last value searched
+ * @param  char * path         - Path to the node (L for Left and R for Right)
+ * @param  int size_of_path    - Each way taken in the tree, increments the size of path
+ * @return struct node *tree   - Node founded or NULL if not found.         
  */
-struct node* search_node(int value, struct node **tree) {
-    /** This will return the node either the value was founded or it doesn't exist */
-    if( ((*tree)->left == NULL && (*tree)->right == NULL) || ((*tree)->right->value == value || (*tree)->left->value == value) || ((*tree)->value == value)) {
-        return *tree;
+struct node* search_node(int value, struct node **tree, char * path, int size_of_path) {
+    printf("%s\n",path );
+    if((*tree) == NULL) {
+        return NULL;
+    } else if((*tree)->value == value) {
+        return (*tree);
     } else if(value > (*tree)->value) {
-        if((*tree)->right->value == NULL) {
-            return *tree;
-        } else {
-            return search_node(value, &(*tree)->right);
-        }
+        path[size_of_path] = 'R';
+        size_of_path++;
+        return search_node(value, &(*tree)->right, path, size_of_path);
     } else if(value < (*tree)->value) {
-        if((*tree)->left->value == NULL) {
-            return *tree;
-        } else {
-            return search_node(value, &(*tree)->left);
-        }
+        path[size_of_path] = 'L';
+        size_of_path++;
+        return search_node(value, &(*tree)->left, path, size_of_path);
     }
 }
 
 void remove_node(int value, struct node **tree);
 
 struct node* split_tree(int value, struct node **tree) {
-    struct node *a, *b, *search;
-    a = *tree;
-    search = search_node(value, &a);
-    if(search->right == NULL && search->left == NULL) {
-        return NULL;
-    } else if(search->right->value == value) {
-        b = search->right;
-        search->right == null;
-        return b;
-    } else if(search->left->value == value) {
-        b = search->left;
-        search->left == null;
-        return b;
-    }
+    
 }

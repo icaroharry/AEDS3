@@ -1,0 +1,29 @@
+a:a, h:h
+x:z
+a:z
+a:c, e:f, x:x
+x:x
+a:c, x:z
+b:b, d:d, f:f, h:h, j:j, l:l, n:n, p:p, r:r, t:t, v:v, x:x, z:z
+
+a:a, d:f, z:z
+
+
+a:a, d:f, h:k, q:q, s:s, u:u, w:w, y:y
+a:z
+a:a
+a:a
+a:b
+a:a
+a:b, d:d, f:f, h:i, k:k, m:m, o:o, q:q, s:s, u:u, w:w, y:z
+a:a, d:e, i:j, o:o, q:q, s:s, w:w
+b:c, e:e, q:q, u:u, w:w, y:y
+a:a
+z:z
+a:d
+
+
+
+
+
+a:a
