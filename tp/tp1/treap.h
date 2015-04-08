@@ -6,12 +6,24 @@ struct node {
     struct node *right;
 };
 
-struct node *root;
+struct node* search_node(int value, struct node **treap);
 
-void insert_node(int value, struct node **tree);
+void locate_node(int value, struct node **treap);
 
-struct node* search_node(int value, struct node **tree, char * path, int size_of_path);
+void print_path(int value, struct node **treap);
 
-void remove_node(int value, struct node **tree);
+void split_treap(int value, struct node **treap, struct node **left, struct node **right);
 
-struct node* split_tree(int value, struct node **tree);
+void swap(struct node **a, struct node **b);
+
+void merge_treaps(struct node **a, struct node **b, char direction);
+
+void insert_node(int value, int priority, struct node **treap);
+
+void remove_node(int value, struct node **treap);
+
+void print_treap(struct node *treap);
+
+void destroy_treap(struct node *treap);
+
+void verify_treap(struct node *treap);
