@@ -1,0 +1,48 @@
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript">
+    
+    google.load('visualization', '1', {packages: ['corechart', 'line']});
+google.setOnLoadCallback(drawBasic);
+
+function drawBasic() {
+
+  var data = new google.visualization.DataTable();
+  data.addColumn('number', 'X');
+  data.addColumn('number', 'Tests');
+
+  data.addRows([ [7, 0.00],
+[8, 0.00],
+[9, 0.00],
+[10, 0.01],
+[11, 0.01],
+[12, 0.02],
+[13, 0.02],
+[14, 0.02],
+[15, 0.03],
+[16, 0.04],
+[17, 0.05],
+[18, 0.05],
+[19, 0.06],
+[20, 0.06],
+[21, 0.07]
+
+
+    ]);
+
+
+  var options = {
+    hAxis: {
+      title: 'Entrada(2^x)'
+    },
+    vAxis: {
+      title: 'Tempo(s * 10^-4)'
+    }
+  };
+
+  var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+
+  chart.draw(data, options);
+}
+</script>
+  <div id="chart_div" style="width: 1100px; height: 600px"></div><div>
+

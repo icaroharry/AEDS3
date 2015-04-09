@@ -1,19 +1,41 @@
 #include <stdio.h>
+#include <stdlib.h> 
+#include <math.h>
+#include <time.h>
 #include "../treap.h"
 
 int main() {
     struct node *a = NULL;
-    int i, x;
-    for(i = 10000, x = 0; i >= 0; i--) {
-        x++;
-        printf("INSERT %d\n", i);
-        insert_node(i, x, &a);
+    struct node *b = NULL;
+    struct node *c = NULL;
+    struct node *d = NULL;
+    int i, x, j;
+    clock_t begin, end;
+    double time_spent;
+    double media = 0;
+
+    srand (time(NULL));
+    for(j = 7; j < 22; j++) {
+        
+        int p = pow(2, (int)j);
+
+        for(x = 0; x < 10; x++) {
+            for(i = 0; i <= p; i++) {
+                insert_node((int)rand()%p + 1, i, &a);
+            }
+            //for(i = 1; i <= p; i++) {
+                split_treap(i, &a, &b, &c);
+            //}
+            begin = clock();
+            merge_treaps(&b, &c, 'R');
+            end = clock();
+            a = b;
+            time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
+            media += time_spent;
+        }
+
+        printf("[%d, %f],\n",j, media/10);
     }
-    for(i = 10000, x = 0; i >= 0; i--) {
-        x++;
-        printf("REMOVE %d\n", i);
-        remove_node(i, &a);
-    }
-    locate_node(1, &a);
+
     return 0;
 }

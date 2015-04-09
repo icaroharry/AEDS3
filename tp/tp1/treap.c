@@ -82,7 +82,7 @@ void swap(struct node **a, struct node **b) {
  * less or equal the given value, and the other containing all the nodes with value
  * greater than the given value
  *
- * @complexity @TODO
+ * @complexity O(log n) [O(n) in worst case]
  * 
  * @param int value            - Given value
  * @param struct node **treap  - Treap to be splited
@@ -111,7 +111,7 @@ void split_treap(int value, struct node **treap, struct node **left, struct node
 /**
  * Given two treaps, that function merge them in the first one.
  *
- * @complexity @TODO
+ * @complexity O(log n) [O(n) in worst case]
  * 
  * @param struct node **a       
  * @param struct node **b         
@@ -164,7 +164,7 @@ void merge_treaps(struct node **a, struct node **b, char direction) {
  * then we merge the created node with the two splited parts of the
  * given treap.
  *
- * @complexity @TODO
+ * @complexity O(log n) [O(n) in worst case]
  *  
  * @param int value              - Value of the new node
  * @param int priority           - Priority of the new node
@@ -193,7 +193,7 @@ void insert_node(int value, int priority, struct node **treap) {
  * only the node to remove, and the third containing all the values greater
  * than the given value.
  *
- * @complexity @TODO
+ * @complexity O(log n) [O(n) in worst case]
  * 
  * @param int value            - Value of the node to remove
  * @param struct node **treap  - Pointer to the treap that contains the value
