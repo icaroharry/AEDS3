@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h> \
+#include <string.h>
 
 int park_car(int car_number, int car_size, int* park, int park_size, int* map) {
     int i, j, k, empty, payment = 0;
