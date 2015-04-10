@@ -57,28 +57,36 @@ int main() {
                 pc++;
                 switch(instruction) {
                     case STA:
+                    printf("FUCKING INSTRUCTION: %d\n", instruction);
                         memory[address] = accu;
                         break;
                     case LDA:
+                    printf("FUCKING INSTRUCTION: %d\n", instruction);
                         accu = memory[address];
                         break;
                     case BEQ:
+                    printf("FUCKING INSTRUCTION: %d\n", instruction);
                         if(accu == 0) {
                             pc = address;
                         }
                         break;
                     case NOP:
+                    printf("FUCKING INSTRUCTION: %d\n", instruction);
                         break;
                     case DEC:
+                    printf("FUCKING INSTRUCTION: %d\n", instruction);
                         accu--;
                         break;
                     case INC:
+                    printf("FUCKING INSTRUCTION: %d\n", instruction);
                         accu++;
                         break;
                     case JMP:
+                    printf("FUCKING INSTRUCTION: %d\n", instruction);
                         pc = address;
                         break;
                     case HLT:
+                    printf("FUCKING INSTRUCTION: %d\n", instruction);
                         printbin(accu);
                         break;
                 }
