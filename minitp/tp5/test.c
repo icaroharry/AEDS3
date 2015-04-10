@@ -1,21 +1,39 @@
 #include <stdio.h>
+#include <stdlib.h>
 
-char * dtob(int dec, char bin[6]) {
-    int i = 0;
-    while(dec!=0){
-        printf("%d\n",dec%2 );
-        bin[i] = (dec % 2);
-        dec = dec / 2;
-        i++;
+int btod(char *bin) {
+    int dec = 0;
+    int i;
+    for(i = 0; i < 8; i++) { 
+        if (bin[i] == '1') dec = dec * 2 + 1; 
+        else if (bin[i] == '0') dec *= 2;
+    } 
+    return dec;
+}
+  
+void printbin(int n) {
+    int k = 0;
+    int x;
+    int l = 0;
+    char a[8];
+    for (k = 7; k >= 0; k--) {
+        x = n >> k;
+        if (x & 1)
+            a[l] = '1';
+        else
+            a[l] = '0';
+        l++;
     }
-    bin[5] = '\0';
-    return bin;
+    a[8] = '\0';
+    printf("%d\n", btod(a));
 }
 
 int main() {
-    int a = 15;
-    char bagulho[6];
-    char * vtnc = dtob(a, bagulho);
-    printf("%s\n", bagulho);
+    int i;
+    unsigned char a;
+    a = 255;
+    printf("%d\n", a);
+    a++;
+    printf("%d\n", a);
     return 0;
 }
