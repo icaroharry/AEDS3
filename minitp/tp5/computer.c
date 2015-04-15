@@ -32,10 +32,13 @@ void printbin(unsigned char n) {
         else
             printf("0");
     }
+    if(!feof(stdin)) {
+        printf("\n");
+    }
 }
   
 int main() {
-    unsigned char accu = 0, pc = 0;
+    unsigned char accu, pc;
     char op[9];
     unsigned char instruction, address;
     unsigned char memory[32];
@@ -44,49 +47,44 @@ int main() {
         memory[i] = btod(op);
         i++;
         if(i == 32) {
-            pc = 0;
             i = 0;
-            accu = 0;
-            instruction = 0;
-            address = 0;
-            while(instruction != HLT && pc < 32) {
+            pc = 0x00;
+            accu = 0x00;
+            instruction = 0x00;
+            address = 0x00;
+            while(instruction != HLT) {
                 instruction = memory[pc];
-                instruction >>= 5;
+                instruction >>= 0x05;
                 address = memory[pc];
                 address &= 0x1F;
                 pc++;
+                if(pc == 32) {
+                    pc = 0;
+                }
                 switch(instruction) {
                     case STA:
-                    printf("FUCKING INSTRUCTION: %d\n", instruction);
                         memory[address] = accu;
                         break;
                     case LDA:
-                    printf("FUCKING INSTRUCTION: %d\n", instruction);
                         accu = memory[address];
                         break;
                     case BEQ:
-                    printf("FUCKING INSTRUCTION: %d\n", instruction);
-                        if(accu == 0) {
+                        if(accu == 0x00) {
                             pc = address;
                         }
                         break;
                     case NOP:
-                    printf("FUCKING INSTRUCTION: %d\n", instruction);
                         break;
                     case DEC:
-                    printf("FUCKING INSTRUCTION: %d\n", instruction);
                         accu--;
                         break;
                     case INC:
-                    printf("FUCKING INSTRUCTION: %d\n", instruction);
                         accu++;
                         break;
                     case JMP:
-                    printf("FUCKING INSTRUCTION: %d\n", instruction);
                         pc = address;
                         break;
                     case HLT:
-                    printf("FUCKING INSTRUCTION: %d\n", instruction);
                         printbin(accu);
                         break;
                 }
@@ -94,4 +92,5 @@ int main() {
         }
         getchar();
     }
+    return 0;
 }
