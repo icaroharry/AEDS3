@@ -1,0 +1,9 @@
+\select@language {brazilian}
+\contentsline {section}{\numberline {1}Introdu\IeC {\c c}\IeC {\~a}o}{2}
+\contentsline {section}{\numberline {2}Modelagem do Problema}{3}
+\contentsline {section}{\numberline {3}An\IeC {\'a}lise Te\IeC {\'o}rica do Custo Assint\IeC {\'o}tico}{5}
+\contentsline {subsection}{\numberline {3.1}An\IeC {\'a}lise do Custo Assint\IeC {\'o}tico de Tempo}{5}
+\contentsline {subsection}{\numberline {3.2}An\IeC {\'a}lise do Custo Assint\IeC {\'o}tico de Espa\IeC {\c c}o}{6}
+\contentsline {section}{\numberline {4}An\IeC {\'a}lise de Experimentos}{8}
+\contentsline {section}{\numberline {5}Conclus\IeC {\~a}o}{10}
+\contentsline {section}{References}{12}
