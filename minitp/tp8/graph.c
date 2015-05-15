@@ -22,9 +22,12 @@ void dfs(char g[V][V], char visited[V], int visited_size, int nv, int v) {
                 dfs(g, visited, visited_size, nv, i);
             }
         }
-    }
-    if(v < V - 1) {
-        dfs(g, visited, visited_size, nv, v+1);
+    } else {
+        for(j = 0; j < nv; j++) {
+            if(!visited[j]) {
+                dfs(g, visited, visited_size, nv, j);
+            }
+        }
     }
 }
 
