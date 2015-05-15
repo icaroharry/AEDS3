@@ -23,18 +23,11 @@ int main() {
     scanf("%u %u\n", &base_x, &base_y);
 
     SetMemoryLimit(mem_limit);
-
     size_t mem_available = (size_t)((mem_limit - STATIC_MEM) * pow(2, 20));
+    mem_available = 5 * sizeof(coordinate);
     size_t mem_slots = mem_available / sizeof(coordinate);
-    attacks = (coordinate *)malloc(mem_available);
-    
+    attacks = (coordinate *)malloc(mem_available);    
     size_t number_of_attacks = automaton(attacks, mem_slots);
-    
-    qsort(attacks, number_of_attacks, sizeof(coordinate), compare);
-
-    size_t i;
-    for(i = 0; i < number_of_attacks; i++) {
-        printf("%u;(%u,%u)\n", attacks[i].tanks, attacks[i].x, attacks[i].y);
-    }
+    external_sort(mem_available);
     return 0;
 }

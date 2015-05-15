@@ -60,12 +60,13 @@ unsigned long automaton(coordinate *attacks, size_t mem_slots) {
             case ')':
                 if(state == 9) {
                     state = 0;
-                    if(i <= mem_slots) {      
+                    if(i < mem_slots) {      
                         attacks[i].x = x;
                         attacks[i].y = y;
                         attacks[i].tanks = tanks;
                         i++;
                     } else {
+                        printf("i de batatatata%lu\n", i);
                         i = 0;
                         flush_coordinates(attacks, mem_slots);
                     }
@@ -102,6 +103,9 @@ unsigned long automaton(coordinate *attacks, size_t mem_slots) {
                             tanks = 0;
                         }
                     }
+                }
+                if(feof(stdin)) {
+                    flush_coordinates(attacks, i);
                 }
                 break;
         }

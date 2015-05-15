@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <math.h>
+
 /**
  * Coordinate strucute
  */
@@ -15,3 +16,5 @@ unsigned int base_y;
 int compare(const void * a, const void * b);
 
 void flush_coordinates(coordinate *attacks, size_t mem_slots);
+
+void merge_files(size_t mem_size);
