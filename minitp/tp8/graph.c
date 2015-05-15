@@ -18,10 +18,11 @@ int dfs(char g[V][V], char visited[V], int nv, int v) {
     printf("%c,", index_to_char(v));
     visited[v] = 1;
     count++;
+    
     for(i = 0, i != v; i < nv; i++) {
-        printf("%d %d ",v, i); 
+
         if(g[v][i] && !visited[i]) {
-            return dfs(g, visited, nv, i);   
+            dfs(g, visited, nv, i);   
         }
     }
 }
@@ -39,15 +40,8 @@ int main() {
             scanf("%c %c\n", &v1, &v2);
             v1_int = char_to_index(v1); 
             v2_int = char_to_index(v2);
-            printf("%d %d\n", v1_int, v2_int);
             graph[v1_int][v2_int] = 1;
             graph[v2_int][v1_int] = 1;
-        }
-        for(j = 0; j < v; j++) {
-            for(k = 0; k < v; k++) {
-                printf("%d ", graph[j][k]);
-            }
-            printf("\n");
         }
         printf("Case #%d\n", i+1);
         k = 0;
