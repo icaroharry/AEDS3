@@ -1,0 +1,46 @@
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript">
+    
+    google.load('visualization', '1', {packages: ['corechart', 'line']});
+google.setOnLoadCallback(drawBasic);
+
+function drawBasic() {
+
+  var data = new google.visualization.DataTable();
+  data.addColumn('number', 'X');
+  data.addColumn('number', 'Tests');
+
+  data.addRows([ [2, 0.002],
+[3, 0.002],
+[4, 0.002],
+[5, 0.002],
+[6, 0.002],
+[7, 0.002],
+[8, 0.002],
+[9, 0.004],
+[10, 0.010],
+[11, 0.028],
+[12, 0.068],
+[13, 0.258],
+[14, 1.051],
+[15, 4.353],
+[16, 18.469],
+[17, 76.684] ]);
+
+
+  var options = {
+    hAxis: {
+      title: 'Numero de cidades'
+    },
+    vAxis: {
+      title: 'Tempo em s'
+    }
+  };
+
+  var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+
+  chart.draw(data, options);
+}
+</script>
+  <div id="chart_div" style="width: 1100px; height: 600px"></div><div>
+

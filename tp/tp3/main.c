@@ -6,15 +6,15 @@
 
 int main() {
     int n, r, i, j, k, ra, rb, u, t;
-    restriction *R;
     int restricted = 0;
     long int x[23], y[23];
     graph g;
     graph restrictions;
+
     create_graph(&g, MAX, 0);
     create_graph(&restrictions, MAX, 1);
-    int control = 1;
-    while(control) {
+
+    while(!feof(stdin)) {
         scanf("%d\n", &n);
         if(n == 0) {
             break;
@@ -28,31 +28,34 @@ int main() {
 
         scanf("%d\n", &r);
         if(r == 0) {
-            control = 0;
+            /** 
+             * If there are no restrictions, creating a simple 
+             * restriction we avoid to check the back way
+             */
+            new_edge(&restrictions, 1 , 2, 1, 1);
         } else {
-            R = (restriction *)malloc(r * sizeof(restriction));
             for(j = 0; j < r; j++) {
                 scanf("%d %d\n", &ra, &rb);
                 if(restrictions.m[rb][ra]) {
-                    restricted = 1;
+                    restricted = 0;
                 }
                 new_edge(&restrictions, ra, rb, 1, 1);
             }      
         }
 
+        /** A cycle a->b b->a in restrictions represents a deadlock */
         if(!restricted) {
             tsp(&g, n, &restrictions);
         } else {
             printf("Deadlock\n");
             restricted = 0;
         }
-        if(r) {
-            for(u = 0; u < n; u++) {
-                for(t = 0; t < n; t++) {
-                    restrictions.m[u][t] = 0;
-                }
+
+        /** Clean restrictions */
+        for(u = 0; u < n; u++) {
+            for(t = 0; t < n; t++) {
+                restrictions.m[u][t] = 0;
             }
-            free(R);
         }
     }
 
