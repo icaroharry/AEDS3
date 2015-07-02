@@ -16,7 +16,7 @@ float mr_jones_sucks(int n, int m) {
                 if(M[i-1][j-1] + product_price[i-1] < M[i-1][j]) {
                     M[i][j] = M[i-1][j-1] + product_price[i-1];
                 } else {
-                    M[i][j] = M[i-1][j];    
+                    M[i][j] = M[i-1][j];
                 }
             } else {
                 M[i][j] = M[i-1][j];
@@ -32,7 +32,7 @@ int main() {
     char c;
 
     while(1) {
-        
+
         scanf("%d %d\n", &m, &n);
         if(m == 0 && n == 0) {
             break;
@@ -60,9 +60,9 @@ int main() {
             printf("Impossible\n");
         } else {
             printf("%.2f\n", result);
-        }    
+        }
     }
-    
-    
+
+
     return 0;
 }
