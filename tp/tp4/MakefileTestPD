@@ -1,0 +1,6 @@
+tp: casino.o test.o
+	gcc -Wall casino.o test.o -o tp
+test.o: test.c casino.h
+	gcc -Wall -g3 -c test.c
+casino.o: casino.h casino.c
+	gcc -Wall -g3 -c casino.c

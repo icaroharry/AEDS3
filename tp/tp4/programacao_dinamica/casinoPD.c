@@ -43,7 +43,7 @@ int play_game(int S, int sum, int X, int M, int *sequence) {
             }
         }
     }
-    for(i = X; i > 0; i--) {
+    for(i = X; i >= 0; i--) {
         if(m[S][i]) {
             destroy_matrix(S + 1, m);
             return i;
