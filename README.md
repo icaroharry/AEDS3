@@ -13,7 +13,4 @@ Contém um micro-framework de testes unitários [jera](http://www.jera.com/techi
 Contém um arquivo sh para compactar os arquivos no formato exigido para os TPs, digitar:
   
 
-    ./zip.sh tp #
-
-  
- # = número do tp
+    ./zip.sh tp x // x = TP number
